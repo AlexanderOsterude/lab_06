@@ -11,6 +11,19 @@ def encoder(password):
 
 
 def decoder(password):
+    decoded_pass = ""
+    for element in password:
+        element = int(element) - 3
+        if element == -3:
+            element = 7
+        if element == -2:
+            element = 8
+        if element == -1:
+            element = 9
+        decoded_pass += str(element)
+
+    return decoded_pass
+
     pass
 
 
@@ -29,7 +42,7 @@ Menu
             encoded_pass = encoder(password)
             print('Your password has been encoded and stored!')
         elif choice == '2':
-            decoded_pass = encoder(encoded_pass)
+            decoded_pass = decoder(encoded_pass)
             print(f'The encoded password is {encoded_pass}, and the original password is {decoded_pass}.')
         elif choice == '3':
             break
